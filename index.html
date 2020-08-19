@@ -116,12 +116,52 @@ button.big-button:active::before {
 <body>
 
 <p id="p1"></p>
-<button id="b1" class="big-button" onclick="myFunction()" >Soru için tıkla</button>
+<button id="b1" class="big-button" onclick="doTheJob()" >Soru için tıkla</button>
 
 <script>
-    function myFunction() {
-        document.getElementById("p1").innerHTML = "Araban kaç beygir?";
+  a = ["Nerelisin?",
+      "Evcil hayvanın var mı?",
+      "Kardeşin var mı?",
+      "Adının ne anlama geldiğini biliyor musun?",
+      "Hafta sonunda neler yaptın?",
+      "Bu hafta sonu için planların neler?",
+      "Boş zamanlarında neler yaparsın?",
+      "Uyandığında yaptığın ilk şey ne?",
+      "Uyumadan önce yaptığın son şey ne?",
+      "Bir lakabın var mı?",
+      "Satın aldığın son şey neydi?",
+      "En sevdiğin tatil ne?",
+      "Haftanın en sevdiğin günü hangisi?",
+      "Tarihte biriyle tanışabilseydin, kim olurdu?",
+      "Rahatlamak için ne yapmayı seversin?",
+      "Para biriktirir misin yoksa direk harcar mısın?",
+      "Herhangi bir enstrüman çalıyor musun?"];
+    wordCount=0;
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
     }
+    pressed=1;
+    return a;
+  }
+  pressed=0
+    function doTheJob() {
+      if (pressed==0){
+        a=shuffle(a)
+      }
+    document.getElementById("p1").innerHTML= a[wordCount];
+    if (wordCount==a.length-1){
+      a=shuffle(a);
+      wordCount=0;
+    }
+    else {
+      wordCount = wordCount + 1;
+    };
+    };
     </script>
 </body>
 </html>
